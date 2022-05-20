@@ -1,0 +1,5 @@
+lastName,firstName,email,password,phoneticLastName,phoneticFirstName,privateEmail,aliasEmails,nickName,employmentTypeId,levelId,orgUnitIds,positionId,telephone,cellPhone,locale,task,location,protocol,messengerId,hiredDate
+lastname,,user01@yourcompany.com,PaSsWoRd1,,,,,,,,,,,,,,,,,2022-02-02
+検証,太郎,taro@yourcompany.com,NewPW4Taro,ケンショウ,タロウ,taro.private@example.com,,検証くん,externalKey:emptype_fulltime,externalKey:level_general,externalKey:shop_shibuya,externalKey:position_staff,030-1111-1111,090-1111-1111,ja_JP,接客担当,にこにこ商会渋谷支店,LINE,LineID,2001-12-31
+検証,二郎,jiro@yourcompany.com,NewPW4Jiro,ケンショウ,ジロウ,jiro.private@example.com,alias0@yourcompany.com,検証さん,externalKey:emptype_fulltime,externalKey:level_manager,externalKey:shop_shinagawa;externalKey:shop_shibuya,externalKey:position_chief,030-1111-1111,090-1111-1111,ja_JP,店長,にこにこ商会品川支店,LINE,LineID,1980-01-01
+にこにこ,はなこ,hanako@ourcompany.com,,ニコニコ,ハナコ,hanako.private@example.coma,alias1@yourcompany.com;alias2@yourcompany.com,ニコニコさん,externalKey:emptype_fulltime,externalKey:level_manager,,,030-1111-1111,,ja_JP,マネージャー,にこにこ商会,,,
