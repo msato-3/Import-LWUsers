@@ -57,7 +57,7 @@ function  Initialize-Header() {
     $response = Invoke-RestMethod -Uri $url -Method POST -Headers $requestHeader -Body $requestBody
 
     $global:Header = @{
-        Authorization  = "Bearer ” + $response.access_token
+        Authorization  = "Bearer " + $response.access_token
         'Content-Type' = 'application/json'
         Accept         = 'application/json'
     }
