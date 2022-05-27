@@ -63,6 +63,8 @@ WSManStackVersion              3.0
 ```
 対応する PowerShell がインストールされていない場合には、[Windows への PowerShell のインストール](https://docs.microsoft.com/ja-jp/powershell/scripting/install/installing-powershell-on-windows)を参考にインストールしてください。  
 青い PowerShell と黒い PowerShell は同じマシンに共存することができますのでご注意ください。以降の作業は黒い PowerShell で実行します。
+> Mac でも動作すると思います。Mac への PowerShell のインストールについては [macOS への PowerShell のインストール](https://docs.microsoft.com/ja-jp/powershell/scripting/install/installing-powershell-on-macos) を参照してください。  
+> 他のプラットフォームでも動作するかもしれませんが、確認はしていません。
 
 ### 2.1. スクリプトのダウンロード
 適当な場所にフォルダを作成します。[Import-LWUsers.ps1]、［ImportUsers.csv］ をダウンロードして、フォルダに保存します。
