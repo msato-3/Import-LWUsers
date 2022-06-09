@@ -73,7 +73,7 @@ function New-LWUser($LWUser) {
     $requestBody = [System.Text.Encoding]::UTF8.GetBytes($body)
 
     if (![String]::IsNullOrEmpty($requestLog)) {
-        $logmsg = (Get-Date  -Format G) + "`r`n処理番号 $i  : " + $CSVUser.email + "`r`n$body`r`n----------`r`n"
+        $logmsg = (Get-Date  -Format G) + "`r`n処理番号 $i  : " + $LWUser.email + "`r`n$body`r`n----------`r`n"
         Add-Content $requestLog $logmsg
     }
 
@@ -81,7 +81,7 @@ function New-LWUser($LWUser) {
 
     if ($response.StatusCode -ge 400) {
         ## ユーザー作成失敗
-        Write-host  "HttpStatsuCode : " $response.StatusCode "  : 処理番号 $i  : "  $CSVUser.email   -ForegroundColor Red
+        Write-host  "HttpStatsuCode : " $response.StatusCode "  : 処理番号 $i  : "  $LWUser.email   -ForegroundColor Red
         if (![String]::IsNullOrEmpty($errorLog)) {
             $logmsg = (Get-Date  -Format G) + "  :  " + $Response.StatusCode + "  :  処理番号: $i  : " + $CSVUser.email + "  :  " + $Response.Content
             Add-Content $errorLog $logmsg
@@ -97,7 +97,7 @@ function New-LWUser($LWUser) {
         }
 
         if (![String]::IsNullOrEmpty($responseLog)) {
-            $logmsg = (Get-Date  -Format G) + "`r`n処理番号 $i  : " + $CSVUser.email + "`r`n" + $Response.Content + "`r`n----------`r`n"
+            $logmsg = (Get-Date  -Format G) + "`r`n処理番号 $i  : " + $LWUser.email + "`r`n" + $Response.Content + "`r`n----------`r`n"
             Add-Content $responseLog $logmsg
         }
     }
@@ -182,6 +182,8 @@ foreach ($CSVUser in $CSVUsers) {
 
     New-LWUser $LWUser
     $i++
+    $LWUser = $NULL
+    $org = $NULL
 }
 $global:Header = $null
 Write-Host "完了！" 
