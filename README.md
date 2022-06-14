@@ -84,6 +84,11 @@ $SvcAccount = 'xxxxx.serviceaccount@yourcompanygroupname'
 $domainId = 12345678
 ```
 
+RateLimit は、同じ API を 1 分間に呼び出すことができる制限値です。  
+今回のスクリプトを単独で利用する場合には RateLimit に達することはないと思いますが、他にも LINE WORKS API 2.0 を利用するアプリケーションを利用している場合には、安全のために設定を引き下げることを検討してください。
+```
+$RateLimit = 240
+```
 
 #### 入出力ファイル. 
 入力ファイルは、後ほど準備して同じフォルダに置きます。  
