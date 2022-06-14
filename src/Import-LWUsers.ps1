@@ -7,6 +7,7 @@ $ClientSecret = 'Tqexxxxxxxx'
 $SvcAccount = 'xxxxx.serviceaccount@yourcompanygroupname'
 $domainId = 12345678
 
+$RateLimit = 240
 
 ## 入出力ファイル を指定します。
 $UsersCSV = '.\ImportUsers.csv'
@@ -19,6 +20,7 @@ $errorLog = '.\Error.log'         # エラーとなったレスポンスのロ�
 
 ###########################################
 
+$sleep = [int] (0.9 * (60 * 1000) / $RateLimit )
 
 $global:Header = $null
 $APIEndPoint = 'https://www.worksapis.com/v1.0/users'
@@ -66,7 +68,7 @@ function New-LWUser($LWUser) {
         Initialize-Header
     }
     else {
-        Start-Sleep 1
+        Start-Sleep  -Milliseconds $sleep
     }
 
     $body = $LWUser | convertto-json -depth 10
