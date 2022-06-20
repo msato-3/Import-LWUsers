@@ -114,23 +114,23 @@ foreach ($CSVUser in $CSVUsers) {
     $LWUser = @{
         domainId         = $domainId
         email            = $CSVUser.email.Trim()
-        privateEmail     = $CSVUser.privateEmail.Trim()
+        privateEmail     = ([String]::IsNullOrEmpty( $CSVUser.privateEmail.Trim() ) ? $null : $CSVUser.privateEmail.Trim() )
 
         userName         = @{
-            lastName          = $CSVUser.lastName.Trim()
-            firstName         = $CSVUser.firstName.Trim()
-            phoneticLastName  = $CSVUser.phoneticLastName.Trim()
-            phoneticFirstName = $CSVUser.phoneticFirstName.Trim()
+            lastName          = ([String]::IsNullOrEmpty( $CSVUser.lastName.Trim() ) ? $null : $CSVUser.lastName.Trim() )
+            firstName         = ([String]::IsNullOrEmpty( $CSVUser.firstName.Trim() ) ? $null : $CSVUser.firstName.Trim() )
+            phoneticLastName  = ([String]::IsNullOrEmpty( $CSVUser.phoneticLastName.Trim( ) ) ? $null : $CSVUser.phoneticLastName.Trim() ) 
+            phoneticFirstName = ([String]::IsNullOrEmpty( $CSVUser.phoneticFirstName.Trim() ) ? $null : $CSVUser.phoneticFirstName.Trim() )
         }
 
-        employmentTypeId = $CSVUser.employmentTypeId.Trim()
-        nickName         = $CSVUser.nickName.Trim()
-        telephone        = $CSVUser.telephone.Trim()
-        cellPhone        = $CSVUser.cellPhone.Trim()
-        locale           = $CSVUser.locale.Trim()
-        task             = $CSVUser.task.Trim()
-        location         = $CSVUser.location.Trim()
-        hiredDate        = $CSVUser.hiredDate.Trim()
+        employmentTypeId = ([String]::IsNullOrEmpty( $CSVUser.employmentTypeId.Trim() ) ? $null : $CSVUser.employmentTypeId.Trim() )
+        nickName         = ([String]::IsNullOrEmpty( $CSVUser.nickName.Trim() ) ? $null : $CSVUser.nickName.Trim() )
+        telephone        = ([String]::IsNullOrEmpty( $CSVUser.telephone.Trim() ) ? $null : $CSVUser.telephone.Trim() )
+        cellPhone        = ([String]::IsNullOrEmpty( $CSVUser.cellPhone.Trim() ) ? $null : $CSVUser.cellPhone.Trim() )
+        locale           = ([String]::IsNullOrEmpty( $CSVUser.locale.Trim() ) ? $null : $CSVUser.locale.Trim() )
+        task             = ([String]::IsNullOrEmpty( $CSVUser.task.Trim() ) ? $null : $CSVUser.task.Trim() )
+        location         = ([String]::IsNullOrEmpty( $CSVUser.location.Trim() ) ? $null : $CSVUser.location.Trim() )
+        hiredDate        = ([String]::IsNullOrEmpty( $CSVUser.hiredDate.Trim() ) ? $null : $CSVUser.hiredDate.Trim() )
     }
 
     if (!([String]::IsNullOrEmpty($CSVUser.protocol))) {
@@ -169,14 +169,14 @@ foreach ($CSVUser in $CSVUsers) {
     $org = @{
         domainId = $domainId
         primary  = $true
-        levelId  = $CSVUser.levelId.Trim()
+        levelId  = ([String]::IsNullOrEmpty($CSVUser.levelId.Trim()) ? $null : $CSVUser.levelId.Trim())
     }
     if (!([String]::IsNullOrEmpty($CSVUser.orgUnitIds))) {
         $org.orgUnits = @()
-        foreach ($orgUnitId in $CSVUser.orgUnitIds.split(";").trim()) {
+        foreach ($orgUnitId in $CSVUser.orgUnitIds.split(";").Trim()) {
             $org.orgUnits += @(@{
                     orgUnitId  = $orgUnitId
-                    positionId = $CSVUser.positionId.Trim()
+                    positionId = ([String]::IsNullOrEmpty($CSVUser.positionId.Trim()) ? $null : $CSVUser.positionId.Trim())
                 })
         }
     }
@@ -189,3 +189,4 @@ foreach ($CSVUser in $CSVUsers) {
 }
 $global:Header = $null
 Write-Host "完了！" 
+
